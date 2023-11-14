@@ -38,6 +38,7 @@ dependencies:
   badges: ^3.1.2
   firebase_messaging: ^14.7.4
   firebase_core: ^2.22.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -68,9 +69,16 @@ flutter:
     - assets/logo/microsoft.png
     - assets/logo/logo_appbar.png
     - assets/images/login.png
+    - assets/images/home_upper.png
+    - assets/images/home_bottom.png
     - assets/icons/PowerBI.png
     - assets/icons/SAI360.png
     - assets/icons/ChemAIer.png
+    - assets/icons/SAP.png
+    - assets/icons/approval.png
+    - assets/icons/boat.png
+    - assets/icons/plane.png
+    - assets/banners/banner_1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

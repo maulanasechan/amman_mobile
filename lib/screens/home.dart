@@ -1,3 +1,5 @@
+import 'package:amman_mobile_app/widgets/icon_in_card.dart';
+import 'package:amman_mobile_app/widgets/image_carousel.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,9 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 9, 76, 99),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 9, 76, 99),
+        flexibleSpace: Positioned.fill(
+          child: Image.asset(
+            'assets/images/home_upper.png',
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.topCenter,
+          ),
+        ),
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -67,42 +74,135 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                suffixIcon: const Icon(Icons.search),
-                hintText: 'Search here...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(
-                      10.0), // Set your desired border radius
-                ),
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-              ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(14),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                  'assets/images/home_bottom.png'), // Replace with your image asset path
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.topCenter, // Align the image to the top
             ),
-            const SizedBox(
-              height: 24,
-            ),
-            Card(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('assets/icons/PowerBI.png'),
-                      ),
-                    ],
+          ),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  suffixIcon: const Icon(Icons.search),
+                  hintText: 'Search here...',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                ],
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                ),
               ),
-            )
-          ],
+              const SizedBox(
+                height: 24,
+              ),
+              Container(
+                padding: const EdgeInsets.all(20),
+                height: 225,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 181, 204, 235)
+                          .withOpacity(0.6),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ), // Set your desired fixed height for the card
+                child: GridView(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 30,
+                    crossAxisSpacing: 0,
+                  ),
+                  children: const [
+                    IconInCard(
+                      imageIcon: 'assets/icons/SAP.png',
+                      titleIcon: 'SAP/4 Hana',
+                      iconType: 2,
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/SAP.png',
+                      titleIcon: 'SAP SAC',
+                      iconType: 2,
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/SAP.png',
+                      titleIcon: 'SAP FIORI',
+                      iconType: 2,
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/SAP.png',
+                      titleIcon: 'SAP ARIBA',
+                      iconType: 2,
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/SAI360.png',
+                      titleIcon: 'SAI360',
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/PowerBI.png',
+                      titleIcon: 'Power BI',
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/ChemAIer.png',
+                      titleIcon: 'ChemAIer',
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Container(
+                padding: const EdgeInsets.all(20),
+                height: 136,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 181, 204, 235)
+                          .withOpacity(0.6),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ), // Set your desired fixed height for the card
+                child: const Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconInCard(
+                      imageIcon: 'assets/icons/approval.png',
+                      titleIcon: 'My Pending Approval',
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/boat.png',
+                      titleIcon: 'Boat Booking',
+                    ),
+                    IconInCard(
+                      imageIcon: 'assets/icons/plane.png',
+                      titleIcon: 'Seaplane Booking',
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const ImageCarousel(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Container(
